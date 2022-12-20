@@ -5,8 +5,8 @@
   "public": true,
   "builds": [
     {
-      "src": "/dist/main.js",
-      "use": "@vercel/node"
+      "src": "/dist",
+      "use": "nest build"
     }
   ],
   "routes": [
