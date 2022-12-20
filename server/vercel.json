@@ -1,0 +1,18 @@
+{
+  "installCommand": "npm install",
+  "outputDirectory": "dist",
+  "devCommand": "node start:prod",
+  "public": true,
+  "builds": [
+    {
+      "src": "/dist/main.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/graphql",
+      "dest": "/dist/main.js"
+    }
+  ]
+}
