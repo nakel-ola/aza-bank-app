@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/graphql",
-      "dest": "src/main.ts"
+      "dest": "dist/main.ts"
     }
   ]
 }
