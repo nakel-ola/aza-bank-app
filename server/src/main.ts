@@ -15,6 +15,9 @@ async function bootstrap() {
     allowedHeaders: '*',
     origin: '*',
   });
-  await app.listen(process.env.PORT || 3333);
+  await app.listen(process.env.PORT || 3333, "0.0.0.0", () => {
+    console.log(`Server listerning on port: http://localhost:3333`)
+  });
+  console.log(await app.getUrl())
 }
 bootstrap();
