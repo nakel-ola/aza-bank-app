@@ -11,6 +11,10 @@ async function bootstrap() {
       whitelist: true,
     })
   );
+  app.enableCors({
+    allowedHeaders: '*',
+    origin: '*',
+  });
   await app.listen(process.env.PORT || 3333);
 }
 bootstrap();
