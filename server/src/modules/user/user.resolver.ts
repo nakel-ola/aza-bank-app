@@ -8,7 +8,6 @@ import { GetUser } from "./decorators/get-user.decorator";
 import { TokenDto, UserDto, ValidateDto } from "./dto";
 import {
   ChangePasswordInput,
-  FileUploadInput,
   ForgetPasswordInput,
   LoginInput,
   RegisterInput,
