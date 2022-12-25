@@ -2,7 +2,7 @@
 import { UseGuards } from "@nestjs/common";
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 // import * as GraphQLUpload from "graphql-upload/GraphQLUpload.js";
-import { GraphQLUpload } from "graphql-upload-minimal";
+// import { GraphQLUpload } from "graphql-upload-minimal";
 import { MessageDto } from "../transaction/dto/message.dto";
 import { GetUser } from "./decorators/get-user.decorator";
 import { TokenDto, UserDto, ValidateDto } from "./dto";
@@ -59,12 +59,12 @@ export class UserResolver {
     return user;
   }
 
-  @UseGuards(JwtGuard)
-  @Mutation(() => MessageDto)
-  async updatePhotoUrl(
-    @Args({ name: "file", type: () => GraphQLUpload }) file: Promise<FileUpload>,
-    @GetUser() user: UserDto
-  ) {
-    return this.userService.updatePhotoUrl(file, user);
-  }
+  // @UseGuards(JwtGuard)
+  // @Mutation(() => MessageDto)
+  // async updatePhotoUrl(
+  //   @Args({ name: "file", type: () => GraphQLUpload }) file: Promise<FileUpload>,
+  //   @GetUser() user: UserDto
+  // ) {
+  //   return this.userService.updatePhotoUrl(file, user);
+  // }
 }
