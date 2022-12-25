@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { UseGuards } from "@nestjs/common";
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
-import * as GraphQLUpload from "graphql-upload/GraphQLUpload.js";
+// import * as GraphQLUpload from "graphql-upload/GraphQLUpload.js";
+import { GraphQLUpload } from "graphql-upload-minimal"
 import { MessageDto } from "../transaction/dto/message.dto";
 import { GetUser } from "./decorators/get-user.decorator";
 import { TokenDto, UserDto, ValidateDto } from "./dto";
 import {
   ChangePasswordInput,
+  FileUploadInput,
   ForgetPasswordInput,
   LoginInput,
   RegisterInput,
