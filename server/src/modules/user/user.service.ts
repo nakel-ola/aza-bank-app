@@ -237,9 +237,9 @@ export class UserService {
    * @param {FileUpload} file - FileUpload - This is the file that we are uploading.
    * @param {UserDto} user - UserDto - This is the user object that we are going to update.
    */
-  public async updatePhotoUrl(file: FileUpload, user: UserDto) {
+  public async updatePhotoUrl(file: Promise<FileUpload>, user: UserDto) {
     if (user.photoUrl) await this.cloudStorageService.removeFile(user.photoUrl);
-    const url = await this.cloudStorageService.uploadFile(file);
+    const url = await this.cloudStorageService.uploadFile(await file);
     const newUser = await this.userModel.updateOne(
       { email: user.email },
       { photoUrl: url }
