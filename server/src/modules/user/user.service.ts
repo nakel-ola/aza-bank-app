@@ -26,7 +26,7 @@ import {
   RegisterInput,
   ValidateCodeInput,
 } from "./dto/input";
-import { FileUpload } from "./interface/file-upload.interface";
+// import { FileUpload } from "./interface/file-upload.interface";
 import { User, UserDocument } from "./schema/user.schema";
 import { Validate, ValidateDocument } from "./schema/validate.schema";
 
@@ -40,7 +40,7 @@ export class UserService {
     private readonly validateModel: Model<ValidateDocument>,
     private jwt: JwtService,
     private config: ConfigService,
-    private cloudStorageService: CloudStorageService,
+    // private cloudStorageService: CloudStorageService,
     private mailService: MailService
   ) {}
 
@@ -237,19 +237,19 @@ export class UserService {
    * @param {FileUpload} file - FileUpload - This is the file that we are uploading.
    * @param {UserDto} user - UserDto - This is the user object that we are going to update.
    */
-  public async updatePhotoUrl(file: Promise<FileUpload>, user: UserDto) {
-    if (user.photoUrl) await this.cloudStorageService.removeFile(user.photoUrl);
-    const url = await this.cloudStorageService.uploadFile(await file);
-    const newUser = await this.userModel.updateOne(
-      { email: user.email },
-      { photoUrl: url }
-    );
-    if (!newUser) {
-      throw new Error("Something went wrong");
-    }
+  // public async updatePhotoUrl(file: Promise<FileUpload>, user: UserDto) {
+  //   if (user.photoUrl) await this.cloudStorageService.removeFile(user.photoUrl);
+  //   const url = await this.cloudStorageService.uploadFile(await file);
+  //   const newUser = await this.userModel.updateOne(
+  //     { email: user.email },
+  //     { photoUrl: url }
+  //   );
+  //   if (!newUser) {
+  //     throw new Error("Something went wrong");
+  //   }
 
-    return { message: "Successfull uploaded" };
-  }
+  //   return { message: "Successfull uploaded" };
+  // }
 
   /**
    * It signs a JWT token using the user's ID, email, and an optional expiration date
