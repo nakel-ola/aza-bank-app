@@ -13,7 +13,7 @@ import {
   verificationMail,
   welcomeMsg,
 } from "../../data/emailData";
-import { CloudStorageService } from "../../helper/cloud-storage.service";
+// import { CloudStorageService } from "../../helper/cloud-storage.service";
 import cryptr from "../../helper/cryptr";
 import generateCode from "../../helper/generateCode";
 import { MailService } from "../mail/mail.service";
