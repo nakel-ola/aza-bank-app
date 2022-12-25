@@ -6,7 +6,6 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { Request, Response } from "express";
 import { join } from "path";
-import { DatabaseModule } from "./modules/database/database.module";
 import { TransactionModule } from "./modules/transaction/transaction.module";
 import { UserModule } from "./modules/user/user.module";
 
@@ -18,10 +17,7 @@ import { UserModule } from "./modules/user/user.module";
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        uri:
-          configService.get<string>("NODE_ENV") === "test"
-            ? configService.get<string>("MONGODB_TEST_URI")
-            : configService.get<string>("MONGODB_URI"),
+        uri: configService.get<string>("MONGODB_URI"),
         useNewUrlParser: true,
       }),
       inject: [ConfigService],
@@ -37,8 +33,7 @@ import { UserModule } from "./modules/user/user.module";
       rootPath: join(__dirname, "../../", "public"),
     }),
     UserModule,
-    TransactionModule,
-    DatabaseModule
+    TransactionModule
   ],
 })
 export class AppModule {}

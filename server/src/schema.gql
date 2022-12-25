@@ -67,7 +67,6 @@ type Mutation {
   forgetPassword(input: ForgetPasswordInput!): MessageDto!
   validateCode(input: ValidateCodeInput!): ValidateDto!
   changePassword(input: ChangePasswordInput!): TokenDto!
-  updatePhotoUrl(file: Upload!): MessageDto!
   sendTransaction(input: SendTransactionInput!): MessageDto!
   depositTransaction(input: DepositTransactionInput!): MessageDto!
 }
@@ -99,9 +98,6 @@ input ChangePasswordInput {
   validationToken: String!
   password: String!
 }
-
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload
 
 input SendTransactionInput {
   accountNumber: Float!
