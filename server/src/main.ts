@@ -11,9 +11,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.enableCors({ allowedHeaders: "*", origin: "*" });
   await app.listen(process.env.PORT || 3333, "0.0.0.0", async () => {
-    console.log(`Server listerning on port: ${await app.getUrl()}`);
+    console.log(`Server listerning on port: ${await app.getUrl()}/graphql`);
   });
-  // console.log(await app.getUrl());
 }
 
 bootstrap()

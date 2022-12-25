@@ -1,16 +1,5 @@
 {
   "version": 2,
-  "env": {
-    "MONGODB_URI": "@server_mongo_uri",
-    "MONGODB_TEST_URI": "@server_mongo_test_uri",
-    "JWT_SECRET": "@server_jwt_secret",
-    "EXPIRES_IN": "@server_expires_in",
-    "STMP_EMAIL": "@server_stmp_email",
-    "STMP_PASSWORD": "@server_stmp_password",
-    "STORAGE_BUCKET_NAME": "@server_storage_bucket_name",
-    "STORAGE_CREDENTIALS_PATH": "@server_storage_credentials_path",
-    "STORAGE_PROJECT_ID": "@server_storage_project_id"
-  },
   "builds": [
     {
       "src": "src/main.ts",
