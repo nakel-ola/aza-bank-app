@@ -1,7 +1,9 @@
 import { ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
-import * as graphqlUploadExpress from "graphql-upload/graphqlUploadExpress.js";
+// import * as graphqlUploadExpress from "graphql-upload/graphqlUploadExpress.js";
 import { AppModule } from "./app.module";
+import { graphqlUploadExpress } from "graphql-upload-minimal";
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
