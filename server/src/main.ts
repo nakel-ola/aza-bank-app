@@ -6,18 +6,12 @@ import { AppModule } from "./app.module";
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(graphqlUploadExpress({ maxFileSize: 2 * 1024 * 1024, maxFiles: 1 }));
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-    })
-  );
-  app.enableCors({
-    allowedHeaders: '*',
-    origin: '*',
-  });
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+  app.enableCors({ allowedHeaders: "*", origin: "*" });
   await app.listen(process.env.PORT || 3333, "0.0.0.0", () => {
-    console.log(`Server listerning on port: http://localhost:3333`)
+    console.log(`Server listerning on port: http://localhost:3333`);
   });
-  console.log(await app.getUrl())
+  console.log(await app.getUrl());
 }
-bootstrap();
+
+bootstrap()
