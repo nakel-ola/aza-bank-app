@@ -15,7 +15,7 @@ import {
 } from "../../data/emailData";
 import { MailService } from "../mail/mail.service";
 import { MessageDto } from "../transaction/dto";
-import { TokenDto, UserDto, ValidateDto } from "./dto";
+import { TokenDto, ValidateDto } from "./dto";
 import {
   ChangePasswordInput,
   ForgetPasswordInput,
@@ -25,8 +25,8 @@ import {
 } from "./dto/input";
 import { User, UserDocument } from "./schema/user.schema";
 import { Validate, ValidateDocument } from "./schema/validate.schema";
-import generateCode from "src/helper/generateCode";
-import cryptr from "src/helper/cryptr";
+import generateCode from "../../helper/generateCode";
+import cryptr from "../../helper/cryptr";
 
 @Injectable()
 export class UserService {

@@ -14,7 +14,7 @@ import {
   SendTransactionInput,
 } from "./dto/inputs";
 import { Transaction, TransactionDocument } from "./schema/transaction.schema";
-import cryptr from "src/helper/cryptr";
+import cryptr from "../../helper/cryptr";
 
 @Injectable()
 export class TransactionService {
