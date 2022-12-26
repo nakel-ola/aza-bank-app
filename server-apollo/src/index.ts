@@ -1,8 +1,5 @@
 import { ApolloServer } from "@apollo/server";
-import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
 import { startStandaloneServer } from "@apollo/server/standalone";
-import express from "express";
-import http from "http";
 import { JwtPayload, verify } from "jsonwebtoken";
 import mongoose from "mongoose";
 import type { Context } from "./../typing.d";
@@ -11,23 +8,11 @@ import cryptr from "./helper/cryptr";
 import db from "./models";
 import resolvers from "./resolvers";
 import typeDefs from "./typeDefs";
-import path from "path"
-import cors from "cors"
-
-const app = express();
-
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb", extended: false }));
-app.use(cors());
-app.use(express.static(path.resolve(__dirname, "../public")));
-
-const httpServer = http.createServer(app);
 
 const server = new ApolloServer<Context>({
   typeDefs,
   resolvers,
   introspection: true,
-  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
 mongoose.set("strictQuery", false);
