@@ -13,9 +13,6 @@ import {
   verificationMail,
   welcomeMsg,
 } from "../../data/emailData";
-// import { CloudStorageService } from "../../helper/cloud-storage.service";
-import cryptr from "../../../../server-apollo/src/helper/cryptr";
-import generateCode from "../../../../server-apollo/src/helper/generateCode";
 import { MailService } from "../mail/mail.service";
 import { MessageDto } from "../transaction/dto";
 import { TokenDto, UserDto, ValidateDto } from "./dto";
@@ -26,9 +23,10 @@ import {
   RegisterInput,
   ValidateCodeInput,
 } from "./dto/input";
-// import { FileUpload } from "./interface/file-upload.interface";
 import { User, UserDocument } from "./schema/user.schema";
 import { Validate, ValidateDocument } from "./schema/validate.schema";
+import generateCode from "src/helper/generateCode";
+import cryptr from "src/helper/cryptr";
 
 @Injectable()
 export class UserService {
@@ -40,7 +38,6 @@ export class UserService {
     private readonly validateModel: Model<ValidateDocument>,
     private jwt: JwtService,
     private config: ConfigService,
-    // private cloudStorageService: CloudStorageService,
     private mailService: MailService
   ) {}
 
@@ -230,26 +227,6 @@ export class UserService {
       access_token: this.signToken(newUser._id.toString(), newUser.email),
     };
   }
-
-  /**
-   * It takes a file and a user, deletes the old image, uploads the new one and updates the user's
-   * photoUrl
-   * @param {FileUpload} file - FileUpload - This is the file that we are uploading.
-   * @param {UserDto} user - UserDto - This is the user object that we are going to update.
-   */
-  // public async updatePhotoUrl(file: Promise<FileUpload>, user: UserDto) {
-  //   if (user.photoUrl) await this.cloudStorageService.removeFile(user.photoUrl);
-  //   const url = await this.cloudStorageService.uploadFile(await file);
-  //   const newUser = await this.userModel.updateOne(
-  //     { email: user.email },
-  //     { photoUrl: url }
-  //   );
-  //   if (!newUser) {
-  //     throw new Error("Something went wrong");
-  //   }
-
-  //   return { message: "Successfull uploaded" };
-  // }
 
   /**
    * It signs a JWT token using the user's ID, email, and an optional expiration date

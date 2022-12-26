@@ -10,7 +10,6 @@ async function bootstrap() {
     graphqlUploadExpress({
       maxFileSize: 2 * 1024 * 1024,
       maxFiles: 1,
-      environment: "lambda",
     })
   );
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
