@@ -10,7 +10,7 @@ import merge from "./merge";
 let apolloClient: any;
 
 const httpLink = createUploadLink({
-  uri: "http://localhost:3333/",
+  uri: process.env.SERVER_URL,
 });
 const authLink = setContext((_, { headers }) => {
   const token = getStorage<{ access_token: string } | null>(
