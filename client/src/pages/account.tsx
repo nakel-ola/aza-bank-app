@@ -27,13 +27,7 @@ let limit = 10;
 
 export default function Account() {
   const { data, loading } = useQuery<TransactionsResponse>(TransactionsQuery, {
-    variables: { input: { page: 1, limit } },
-    onCompleted: (data) => {
-      console.log(data);
-    },
-    onError: (err) => {
-      console.table(err);
-    },
+    variables: { input: { page: 1, limit } }
   });
 
   return (

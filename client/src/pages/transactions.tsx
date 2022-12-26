@@ -23,13 +23,7 @@ export default function Transactions() {
     TransactionsQuery,
     {
       fetchPolicy: "network-only",
-      variables: { input: { page: 1, limit } },
-      onCompleted: (data) => {
-        console.log(data);
-      },
-      onError: (err) => {
-        console.table(err);
-      },
+      variables: { input: { page: 1, limit } }
     }
   );
 
