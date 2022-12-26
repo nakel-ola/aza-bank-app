@@ -14,8 +14,8 @@ import {
   welcomeMsg,
 } from "../../data/emailData";
 // import { CloudStorageService } from "../../helper/cloud-storage.service";
-import cryptr from "../../helper/cryptr";
-import generateCode from "../../helper/generateCode";
+import cryptr from "../../../../server-apollo/src/helper/cryptr";
+import generateCode from "../../../../server-apollo/src/helper/generateCode";
 import { MailService } from "../mail/mail.service";
 import { MessageDto } from "../transaction/dto";
 import { TokenDto, UserDto, ValidateDto } from "./dto";

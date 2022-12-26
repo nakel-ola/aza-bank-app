@@ -4,7 +4,7 @@ import { InjectModel } from "@nestjs/mongoose";
 import { PassportStrategy } from "@nestjs/passport";
 import { Model } from "mongoose";
 import { ExtractJwt, Strategy } from "passport-jwt";
-import cryptr from "../../../helper/cryptr";
+import cryptr from "../../../../../server-apollo/src/helper/cryptr";
 import { User, UserDocument } from "./user.schema";
 
 @Injectable()

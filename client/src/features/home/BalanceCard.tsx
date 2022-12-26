@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Edit2, Refresh } from "iconsax-react";
+import { Refresh } from "iconsax-react";
 import React from "react";
 import { NumericFormat } from "react-number-format";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,12 +26,6 @@ const BalanceCard = () => {
             alt=""
             className="w-[100px] h-[100px] relative"
           />
-          <label
-            htmlFor="image"
-            className="absolute top-0 right-0 bg-slate-100 rounded-lg dark:bg-neutral-800 hover:scale-105 active:scale-95 transition-all duration-300 ease-in cursor-pointer group"
-          >
-            <Edit2 className="text-black dark:text-white group-hover:scale-105 group-active:scale-95" />
-          </label>
         </div>
         <p className="p-2 text-black dark:text-white font-medium text-lg whitespace-nowrap">
           {user?.lastName! + " " + user?.firstName!}
@@ -67,15 +61,6 @@ const BalanceCard = () => {
           )}
         />
       </IconButton>
-      {/* <input
-        type="file"
-        id="image"
-        name="image"
-        accept="image/*"
-        multiple={false}
-        className="hidden"
-        onChange={(e) => handleChange?.(e)}
-      /> */}
     </div>
   ) : null;
 };

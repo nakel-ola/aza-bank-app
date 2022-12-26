@@ -3,55 +3,32 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { createUploadLink } from "apollo-upload-client";
 import { useMemo } from "react";
+import clean from "./clean";
 import { getStorage } from "./localStorage";
 import merge from "./merge";
 
 let apolloClient: any;
 
 const httpLink = createUploadLink({
-  uri: "http://localhost:3333/graphql",
-  // credentials: "include",
-  // fetchOptions: {
-  //   credentials: "include",
-  // },
+  uri: "http://localhost:3333/",
 });
 const authLink = setContext((_, { headers }) => {
-  // get the authorization token from local storage
   const token = getStorage<{ access_token: string } | null>(
     "access_token",
     null
   );
 
+  const authorization = token ? `Bearer ${token}` : null;
+
   return {
-    headers: {
+    headers: clean({
       ...headers,
-      authorization: `Bearer ${token}`,
-    },
+      authorization,
+    }),
   };
 });
 
 const cache = new InMemoryCache();
-
-// const cache = new InMemoryCache({
-//   typePolicies: {
-//     Query: {
-//       fields: {
-//         transactions: {
-//           keyArgs: ["id"],
-//           merge(existing = [], incoming) {
-//             const data = merge(existing.results ?? [], incoming.results, "__ref");
-//             const newData = {
-//               page: incoming.page,
-//               results: data,
-//               totalItems: incoming.totalItems,
-//             };
-//             return newData;
-//           },
-//         },
-//       },
-//     },
-//   },
-// });
 
 export function createApolloClient() {
   return new ApolloClient({

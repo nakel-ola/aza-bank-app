@@ -61,6 +61,7 @@ const LogInCard = () => {
         router.replace("/account");
       },
       onError: (error: any) => {
+        console.table(error)
         toast.error(error.message, { id: toster });
       },
     });

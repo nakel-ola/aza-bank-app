@@ -1,28 +1,15 @@
-import React, { ChangeEvent, ReactNode, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { ReactNode, useState } from "react";
+import { useSelector } from "react-redux";
 import Menubar from "../components/Menubar";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import DepositCard from "../features/home/DepositCard";
-import ImageCard from "../features/home/ImageCard";
 import SendMoneyCard from "../features/home/SendMoneyCard";
-import { handleOpen, selectPopup } from "../redux/features/popupSlice";
-import { toBase64 } from "../utils/toBase64";
+import { selectPopup } from "../redux/features/popupSlice";
 
 const AppLayout = ({ children }: { children: ReactNode }) => {
-  const dispatch = useDispatch();
   const popupState = useSelector(selectPopup);
   const [toggle, setToggle] = useState(false);
-  const [file, setFile] = useState<File | null>(null);
-
-  const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0];
-      const newUrl = await toBase64(file);
-      setFile(file);
-      dispatch(handleOpen({ type: "image", data: newUrl }));
-    }
-  };
   return (
     <>
       {toggle && <Menubar toggle={toggle} setToggle={setToggle} />}
@@ -39,19 +26,8 @@ const AppLayout = ({ children }: { children: ReactNode }) => {
         <>
           {popupState.type === "send" && <SendMoneyCard />}
           {popupState.type === "deposit" && <DepositCard />}
-          {popupState.type === "image" && <ImageCard file={file} setFile={setFile} />}
         </>
       )}
-
-      <input
-        type="file"
-        id="image"
-        name="image"
-        accept="image/*"
-        multiple={false}
-        className="hidden"
-        onChange={(e) => handleChange?.(e)}
-      />
     </>
   );
 };

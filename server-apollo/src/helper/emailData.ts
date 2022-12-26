@@ -1,4 +1,4 @@
-let app_name = "Aza Bank",
+const app_name = "Aza Bank",
   app_logo = "https://storage.googleapis.com/aza-bank.appspot.com/logo.png";
 export const welcomeMsg = ({
   name,
