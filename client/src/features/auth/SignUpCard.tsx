@@ -37,7 +37,7 @@ const validateForm = (data: FormType): boolean => {
     name.length >= 5 &&
     email.match(emailRegex) &&
     phoneNumber.toString().length >= 10 &&
-    password.length === 8
+    password.length >= 8
   ) {
     return false;
   }
