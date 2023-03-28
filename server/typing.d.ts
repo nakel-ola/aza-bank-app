@@ -1,6 +1,18 @@
-import type { Request, Response } from "express";
+import type { IncomingMessage, ServerResponse } from "http";
 
-export interface ContextType {
-  req: Request;
-  res: Response;
+export interface Context {
+  user?: User | null;
+  req: IncomingMessage;
+  res: ServerResponse;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  balance: string;
+  phoneNumber: string;
+  accountNumber: number;
+  photoUrl?: string;
 }
